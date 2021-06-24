@@ -16,7 +16,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        return view('admin.products.index');
+        $products=Product::latest()->paginate(20);
+        return view('admin.products.index',compact('products'));
     }
 
     public function create()
@@ -94,9 +95,12 @@ class ProductController extends Controller
 
     }
 
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        $productAttributes=$product->attributes()->with('attribute')->get();
+        $productVariations=$product->variations;
+        $images=$product->images;
+        return view('admin.products.show',compact('product','productAttributes','productVariations','images'));
     }
 
     public function edit($id)

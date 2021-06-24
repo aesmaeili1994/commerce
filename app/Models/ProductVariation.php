@@ -11,4 +11,5 @@ class ProductVariation extends Model
 
     protected $table="product_variations";
     protected $guarded=[];
+
 }

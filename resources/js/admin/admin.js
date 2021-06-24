@@ -5,6 +5,7 @@ require('chart.js');
 require("sweetalert");
 require('bootstrap-select');
 require('bootstrap-select/dist/js/i18n/defaults-fa_IR');
+require('./files/jquery.czMore-latest');
 
 // start custom js
 (function($) {

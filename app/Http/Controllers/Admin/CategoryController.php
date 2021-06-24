@@ -136,4 +136,13 @@ class CategoryController extends Controller
     {
         //
     }
+
+    //for create page products section attributes&variation/ by route category-attributes/{category}
+    public function getCategoryAttributes(Category $category)
+    {
+        $attributes=$category->attributes()->wherePivot('is_variation',0)->get();
+        $variation=$category->attributes()->wherePivot('is_variation',1)->first();
+        return ['attributes'=>$attributes,'variation'=>$variation];
+    }
+    //end
 }

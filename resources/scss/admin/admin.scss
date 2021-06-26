@@ -10,6 +10,9 @@
 //Import Bootstrap-select
 @import "~bootstrap-select/sass/bootstrap-select.scss";
 
+//Import persian date time picker
+@import "~md.bootstrappersiandatetimepicker/dist/jquery.md.bootstrap.datetimepicker.style.css";
+
 // Import Custom SB Admin 2 Mixins and Components
 @import "mixins.scss";
 @import "global.scss";
@@ -116,4 +119,8 @@ body {
     border-left: unset;
     border-right: inherit;
     border-radius: 0.35rem 0 0 0.35rem;
+}
+
+.mds-bootstrap-persian-datetime-picker-popover{
+    max-width: fit-content !important;
 }

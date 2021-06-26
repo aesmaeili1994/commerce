@@ -22,4 +22,20 @@ class ProductVariationController extends Controller
             ]);
         }
     }
+
+    public function update($variation_ids)
+    {
+        foreach ($variation_ids as $key => $values){
+            $productVariatin=ProductVariation::findOrFail($key);
+
+            $productVariatin->update([
+                 'price'=>$values['price'],
+                 'quantity'=>$values['quantity'],
+                 'sku'=>$values['sku'],
+                 'sale_price'=>$values['sale_price'],
+                 'date_on_sale_from'=>convertShamsiToMiladi($values['date_on_sale_from']),
+                 'date_on_sale_to'=>convertShamsiToMiladi($values['date_on_sale_to'])
+             ]);
+        }
+    }
 }

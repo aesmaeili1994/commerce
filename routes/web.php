@@ -26,4 +26,14 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
 
     //get category attribute by ajax for create page product section attribute@variation
     Route::get('/category-attributes/{category}',[\App\Http\Controllers\Admin\CategoryController::class,'getCategoryAttributes']);
+
+
+    //route for edit images page of products
+    Route::get('/products/{product}/images-edit',[\App\Http\Controllers\Admin\ProductImageController::class,'edit'])->name('products.images.edit');
+
+    //routes for edit Images of products
+    Route::delete('/products/{product}/images-destroy',[\App\Http\Controllers\Admin\ProductImageController::class,'destroy'])->name('products.images.destroy');
+    Route::put('/products/{product}/images-set-primary',[\App\Http\Controllers\Admin\ProductImageController::class,'setPrimary'])->name('products.images.set_primary');
+    Route::post('/products/{product}/images-add',[\App\Http\Controllers\Admin\ProductImageController::class,'add'])->name('products.images.add');
+
 });

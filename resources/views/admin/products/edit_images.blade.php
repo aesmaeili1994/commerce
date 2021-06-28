@@ -28,9 +28,9 @@
 @section('content')
     <!-- Content Row -->
     <div class="row">
-        <div class="col-xl-12 col-md-12 mb-4 p-md-5 bg-white">
+        <div class="col-xl-12 col-md-12 mb-4 p-4 bg-white">
 
-            <div class="mb-4">
+            <div class="mb-4 text-center text-md-right">
                 <h5 class="font-weight-bold">ویرایش تصاویر محصول: {{$product->name}}</h5>
             </div>
             @include('admin.sections.errors')

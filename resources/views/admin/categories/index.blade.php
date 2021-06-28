@@ -8,17 +8,19 @@
 
     <!-- Content Row -->
     <div class="row">
-        <div class="col-xl-12 col-md-12 mb-4 p-md-5 bg-white">
+        <div class="col-xl-12 col-md-12 mb-4 p-4 bg-white">
 
-            <div class="mb-4 d-flex justify-content-between">
-                <h5 class="font-weight-bold">لیست دسته بندی ها ({{$categories->total()}})</h5>
-                <a href="{{route('admin.categories.create')}}" class="btn btn-sm btn-outline-primary">
-                    <i class="fa fa-plus"></i>
-                    ایجاد دسته بندی
-                </a>
+            <div class="d-flex flex-column text-center flex-md-row justify-content-md-between mb-4">
+                <h5 class="font-weight-bold mb-3 mb-md-0">لیست دسته بندی ها ({{$categories->total()}})</h5>
+                <div>
+                    <a href="{{route('admin.categories.create')}}" class="btn btn-sm btn-outline-primary">
+                        <i class="fa fa-plus"></i>
+                        ایجاد دسته بندی
+                    </a>
+                </div>
             </div>
 
-            <div>
+            <div class="table-responsive">
                 <table class="table table-bordered table-striped text-center">
                     <thead>
                     <tr>
@@ -45,8 +47,10 @@
                             </th>
 
                             <th>
-                                <a href="{{ route('admin.categories.show',['category'=>$category->id]) }}" class="btn btn-sm btn-outline-success">نمایش</a>
-                                <a href="{{ route('admin.categories.edit',['category'=>$category->id]) }}" class="btn btn-sm btn-outline-info mr-3">ویرایش</a>
+                                <div class="d-inline-block" style="width: max-content">
+                                    <a href="{{ route('admin.categories.show',['category'=>$category->id]) }}" class="btn btn-sm btn-outline-success">نمایش</a>
+                                    <a href="{{ route('admin.categories.edit',['category'=>$category->id]) }}" class="btn btn-sm btn-outline-info">ویرایش</a>
+                                </div>
                             </th>
                         </tr>
                     @endforeach

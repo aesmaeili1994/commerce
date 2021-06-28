@@ -36,4 +36,8 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
     Route::put('/products/{product}/images-set-primary',[\App\Http\Controllers\Admin\ProductImageController::class,'setPrimary'])->name('products.images.set_primary');
     Route::post('/products/{product}/images-add',[\App\Http\Controllers\Admin\ProductImageController::class,'add'])->name('products.images.add');
 
+    //route for edit category&attributes of products
+    Route::get('/products/{product}/category-edit',[\App\Http\Controllers\Admin\ProductController::class,'editCategory'])->name('products.category.edit');
+    Route::put('/products/{product}/category-update',[\App\Http\Controllers\Admin\ProductController::class,'updateCategory'])->name('products.category.update');
+
 });

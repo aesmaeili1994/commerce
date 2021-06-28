@@ -172,4 +172,48 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function editCategory(Request $request,Product $product)
+    {
+        $categories=Category::where('parent_id','!=',0)->get();
+        return view('admin.products.edit_category',compact('product','categories'));
+    }
+
+    public function updateCategory(Request $request,Product $product)
+    {
+        $request->validate([
+            'category_id'=>'required',
+            'attribute_ids'=>'required',
+            'attribute_ids.*'=>'required',
+            'variation_values'=>'required',
+            'variation_values.*.*'=>'required',
+            'variation_values.price.*'=>'integer',
+            'variation_values.quantity.*'=>'integer',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $product->update([
+                'category_id' => $request->category_id
+            ]);
+
+
+            $productAttributeController = new ProductAttributeController();
+            $productAttributeController->change($request->attribute_ids,$product->id);
+
+            $category=Category::find($request->category_id);
+            $productVariationController = new ProductVariationController();
+            $productVariationController->change($request->variation_values,$category->attributes()->wherePivot('is_variation',1)->first()->id,$product->id);
+
+            DB::commit();
+        }catch (\Exception $ex){
+            DB::rollBack();
+            alert()->error($ex->getMessage(),'مشکل در ویراش دسته بندی محصول')->persistent('متوجه شدم');
+            return redirect()->back();
+        }
+        alert()->success('دسته بندی محصول مورد نظر ویرایش شد', 'با تشکر');
+
+        return redirect()->route('admin.products.index');
+    }
 }

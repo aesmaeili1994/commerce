@@ -32,6 +32,7 @@ class CreateProductVariationsTable extends Migration
             $table->timestamp('date_on_sale_to')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

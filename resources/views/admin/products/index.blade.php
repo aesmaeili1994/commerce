@@ -63,7 +63,7 @@
                                     <div class="dropdown-menu">
                                         <a href="{{ route('admin.products.edit',['product'=>$product->id]) }}" class="dropdown-item text-right">ویرایش محصول</a>
                                         <a href="{{ route('admin.products.images.edit',['product'=>$product->id]) }}" class="dropdown-item text-right">ویرایش تصاویر</a>
-                                        <a href="#" class="dropdown-item text-right">ویرایش دسته بندی و ویژگی</a>
+                                        <a href="{{ route('admin.products.category.edit',['product'=>$product->id]) }}" class="dropdown-item text-right">ویرایش دسته بندی و ویژگی</a>
                                     </div>
                                 </div>
                             </th>

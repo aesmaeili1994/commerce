@@ -23,6 +23,9 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
     Route::resource('categories',\App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('tags',\App\Http\Controllers\Admin\TagController::class);
     Route::resource('products',\App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('banners',\App\Http\Controllers\Admin\BannerController::class);
+
+
 
     //get category attribute by ajax for create page product section attribute@variation
     Route::get('/category-attributes/{category}',[\App\Http\Controllers\Admin\CategoryController::class,'getCategoryAttributes']);

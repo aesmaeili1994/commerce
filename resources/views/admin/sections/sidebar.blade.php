@@ -52,10 +52,22 @@
         </div>
     </li>
 
-
-
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        تنظیملت
+    </div>
+
+    <!-- Nav Item - Banner -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.banners.index') }}">
+            <i class="fas fa-image"></i>
+            <span> بنرها </span>
+        </a>
+    </li>
+
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

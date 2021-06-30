@@ -63,18 +63,20 @@ class BannerController extends Controller
         $request->validate([
             'priority' => 'required|integer',
             'type' => 'required',
-            'image'=>'required|mimes:jpg,jpeg,png,svg'
+            'image'=>'nullable|mimes:jpg,jpeg,png,svg'
         ]);
 
-        $fileName=generateFileName($request->image->getClientOriginalName());
-        $request->image->move(public_path(env('BANNER_IMAGES_UPLOAD_PATH')), $fileName);
+        if ($request->has('image')) {
+            $fileName=generateFileName($request->image->getClientOriginalName());
+            $request->image->move(public_path(env('BANNER_IMAGES_UPLOAD_PATH')), $fileName);
 
-        if(file_exists(public_path(env('BANNER_IMAGES_UPLOAD_PATH')).$banner->image)) {
-            unlink(public_path(env('BANNER_IMAGES_UPLOAD_PATH').$banner->image));
+            if(file_exists(public_path(env('BANNER_IMAGES_UPLOAD_PATH')).$banner->image)) {
+                unlink(public_path(env('BANNER_IMAGES_UPLOAD_PATH').$banner->image));
+            }
         }
 
         $banner->update([
-            'image' =>$fileName,
+            'image' => $request->has('image') ? $fileName : $banner->image,
             'title' => $request->title,
             'text' => $request->text,
             'priority' => $request->priority,

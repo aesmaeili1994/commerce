@@ -44,3 +44,6 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
     Route::put('/products/{product}/category-update',[\App\Http\Controllers\Admin\ProductController::class,'updateCategory'])->name('products.category.update');
 
 });
+
+
+Route::get('/',[\App\Http\Controllers\Home\HomeController::class,'index']);

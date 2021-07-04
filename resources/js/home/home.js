@@ -1,5 +1,6 @@
 require('bootstrap/dist/js/bootstrap.bundle');
 require("sweetalert");
+require("./files/rating");
 
 
 (function ($) {

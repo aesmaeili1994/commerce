@@ -13,9 +13,8 @@ class HomeController extends Controller
     public function index()
     {
     //start test---------------------------------
-//        $product=Product::find(10);
-//        dd($product->quantity_check->price);
-//        dd($product->getSaleCheck()->sale_price);
+//        $product=Product::find(8);
+//        dd($product->attributes()->with('attribute')->first()->attribute->name);
     //end test-----------------------------------
 
         //image slider

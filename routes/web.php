@@ -27,7 +27,7 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
 
 
 
-    //get category attribute by ajax for create page product section attribute@variation
+    //get category attribute by ajax for create page product section attribute&variation
     Route::get('/category-attributes/{category}',[\App\Http\Controllers\Admin\CategoryController::class,'getCategoryAttributes']);
 
 

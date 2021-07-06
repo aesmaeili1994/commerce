@@ -46,4 +46,5 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
 });
 
 
-Route::get('/',[\App\Http\Controllers\Home\HomeController::class,'index']);
+Route::get('/',[\App\Http\Controllers\Home\HomeController::class,'index'])->name('home.index');
+Route::get('/categories/{category:slug}',[\App\Http\Controllers\Home\CategoryController::class,'show'])->name('home.categories.show');

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xl-2 col-lg-2">
                     <div class="logo pt-40">
-                        <a href="index.html">
+                        <a href="{{ route('home.index') }}">
                             <h3 class="font-weight-bold">Brand Name</h3>
                         </a>
                     </div>
@@ -35,7 +35,7 @@
                                                 <ul>
                                                     @foreach($parentCategory->children()->get() as $child)
                                                     <li>
-                                                        <a href="#">{{ $child->name }}</a>
+                                                        <a href="{{ route('home.categories.show',['category'=>$child->slug]) }}">{{ $child->name }}</a>
                                                     </li>
                                                     @endforeach
                                                 </ul>
@@ -46,7 +46,7 @@
                                 </li>
 
                                 <li class="angle-shape">
-                                    <a href="index.html"> صفحه اصلی </a>
+                                    <a href="{{ route('home.index') }}"> صفحه اصلی </a>
                                 </li>
                             </ul>
                         </nav>

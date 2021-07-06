@@ -21,6 +21,7 @@ class ProductAttributeController extends Controller
 
     public function update($attribute_ids)
     {
+
         foreach ($attribute_ids as $key => $value) {
             $productAttribute=ProductAttribute::findOrFail($key);
             $productAttribute->update([

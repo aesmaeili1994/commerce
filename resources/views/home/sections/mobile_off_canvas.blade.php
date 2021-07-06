@@ -20,7 +20,7 @@
                 <nav>
                     <ul class="mobile-menu text-right">
                         <li class="menu-item-has-children">
-                            <a href="index.html"> صفحه ای اصلی </a>
+                            <a href="{{ route('home.index') }}"> صفحه ای اصلی </a>
                         </li>
 
                         <li class="menu-item-has-children">
@@ -38,7 +38,7 @@
                                     <ul class="dropdown">
                                         @foreach($parentCategory->children()->get() as $child)
                                         <li>
-                                            <a href="#"> {{ $child->name }} </a>
+                                            <a href="{{ route('home.categories.show',['category'=>$child->slug]) }}"> {{ $child->name }} </a>
                                         </li>
                                         @endforeach
                                     </ul>

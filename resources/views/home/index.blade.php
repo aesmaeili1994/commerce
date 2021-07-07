@@ -146,8 +146,7 @@
                         <!--Product Start-->
                             @foreach($products as $product)
                                 @if (in_array($product->category_id,$childCategoryId))
-                                    <div
-                                        class="ht-product ht-product-action-on-hover ht-product-category-right-bottom mb-30">
+                                    <div class="ht-product ht-product-action-on-hover ht-product-category-right-bottom mb-30">
                                         <div class="ht-product-inner">
                                             <div class="ht-product-image-wrap">
                                                 <a href="product-details.html" class="ht-product-image">
@@ -225,8 +224,8 @@
                                             </div>
                                         </div>
                                     </div>
-                            @endif
-                        @endforeach
+                                @endif
+                            @endforeach
                         <!--Product End-->
                         </div>
                     </div>

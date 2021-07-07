@@ -34,6 +34,85 @@ class Product extends Model
         return $this->belongsToMany(Tag::class,'product_tag');
     }
 
+//    query for attributes & variation &sort
+    public function scopeFilter($query)
+    {
+
+//        query for attributes
+        if (request()->has('attribute')) {
+            foreach (request()->attribute as $attribute){
+                $query->whereHas('attributes',function ($query) use($attribute){
+                    foreach (explode('-',$attribute) as $index => $value){
+                        if ($index == 0) {
+                            $query->where('value',$value);
+                        }else{
+                            $query->orWhere('value',$value);
+                        }
+                    }
+                });
+            }
+        }
+
+//        query for variations
+        if (request()->has('variation')) {
+            $query->whereHas('variations', function ($query) {
+                foreach (explode('-', request()->variation) as $index => $variation){
+                    if ($index == 0) {
+                        $query->where('value',$variation);
+                    }else{
+                        $query->orWhere('value',$variation);
+                    }
+                }
+            });
+        }
+
+//        query for sort
+        if(request()->has('sortBy')){
+            $sortBy=request()->sortBy;
+
+            switch ($sortBy) {
+                case 'max':
+                    $query->orderByDesc(
+                        ProductVariation::select('price')->whereColumn('product_variations.product_id','products.id')->orderBy('price','desc')->take(1)
+                    );
+                    break;
+
+                case 'min':
+                    $query->orderBy(
+                        ProductVariation::select('price')->whereColumn('product_variations.product_id','products.id')->orderBy('price')->take(1)
+                    );
+                    break;
+
+                case 'latest':
+                    $query->latest();
+                    break;
+
+                case 'oldest':
+                    $query->oldest();
+                    break;
+
+                default:
+                    $query;
+                    break;
+            }
+        }
+
+        return $query;
+    }
+
+//    query for search
+    public function scopeSearch($query)
+    {
+
+//        query for search
+        if (request()->has('search') && trim(request()->search) != '') {
+            $keyword=request()->search;
+            $query->where('name','LIKE','%'.trim($keyword).'%');
+        }
+
+        return $query;
+    }
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);

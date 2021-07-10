@@ -48,3 +48,12 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
 
 Route::get('/',[\App\Http\Controllers\Home\HomeController::class,'index'])->name('home.index');
 Route::get('/categories/{category:slug}',[\App\Http\Controllers\Home\CategoryController::class,'show'])->name('home.categories.show');
+Route::get('/products/{product:slug}',[\App\Http\Controllers\Home\ProductController::class,'show'])->name('home.products.show');
+//Oauth
+Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
+Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthController::class,'handleProviderCallback']);
+
+
+Route::get('/test',function (){
+    auth()->logout();
+});

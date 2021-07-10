@@ -265,7 +265,7 @@
                                             <div class="ht-product ht-product-action-on-hover ht-product-category-right-bottom mb-30">
                                                 <div class="ht-product-inner">
                                                     <div class="ht-product-image-wrap">
-                                                        <a href="product-details.html" class="ht-product-image">
+                                                        <a href="{{ route('home.products.show',['product'=>$product->slug]) }}" class="ht-product-image">
                                                             <img
                                                                 src="{{ asset(env('PRODUCT_IMAGES_UPLOAD_PATH').$product->primary_image) }}"
                                                                 alt="{{ $product->name }}"/>
@@ -301,7 +301,7 @@
                                                                 <a href="#">{{ $product->category->name }}</a>
                                                             </div>
                                                             <h4 class="ht-product-title text-right">
-                                                                <a href="product-details.html">{{ $product->name }}</a>
+                                                                <a href="{{ route('home.products.show',['product'=>$product->slug]) }}">{{ $product->name }}</a>
                                                             </h4>
 
                                                             <div class="ht-product-price">

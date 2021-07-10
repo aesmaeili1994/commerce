@@ -61,11 +61,14 @@
         <div class="mobile-curr-lang-wrap">
             <div class="single-mobile-curr-lang">
                 <ul class="text-right">
-                    <li class="my-3"><a href="login.html"> ورود </a></li>
-                    <li class="my-3">
-                        <a href="register.html"> ایجاد حساب </a>
-                    </li>
-                    <li class="my-3"><a href="my-account.html"> پروفایل </a></li>
+                    @auth
+                        <li class="my-3"><a href="my-account.html"> پروفایل </a></li>
+                    @else
+                        <li class="my-3"><a href="{{ route('login') }}"> ورود </a></li>
+                        <li class="my-3">
+                            <a href="{{ route('register') }}"> ایجاد حساب </a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>

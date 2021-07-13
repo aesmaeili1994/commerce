@@ -24,7 +24,10 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
     Route::resource('tags',\App\Http\Controllers\Admin\TagController::class);
     Route::resource('products',\App\Http\Controllers\Admin\ProductController::class);
     Route::resource('banners',\App\Http\Controllers\Admin\BannerController::class);
+    Route::resource('comments',\App\Http\Controllers\Admin\CommentController::class);
 
+    //route for change approve comment
+    Route::get('/comments/{comment}/change-approve',[\App\Http\Controllers\Admin\CommentController::class,'changeApprove'])->name('comments.change-approve');
 
 
     //get category attribute by ajax for create page product section attribute&variation
@@ -45,14 +48,19 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
 
 });
 
-
 Route::get('/',[\App\Http\Controllers\Home\HomeController::class,'index'])->name('home.index');
 Route::get('/categories/{category:slug}',[\App\Http\Controllers\Home\CategoryController::class,'show'])->name('home.categories.show');
 Route::get('/products/{product:slug}',[\App\Http\Controllers\Home\ProductController::class,'show'])->name('home.products.show');
+Route::post('/comments/{product}',[\App\Http\Controllers\Home\CommentController::class,'store'])->name('home.comments.store');
+
 //Oauth
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
 Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthController::class,'handleProviderCallback']);
 
+Route::prefix('profile')->name('home.')->group(function () {
+    Route::get('/',[\App\Http\Controllers\Home\UserProfileController::class,'index'])->name('users_profile.index');
+    Route::get('/comments',[\App\Http\Controllers\Home\CommentController::class,'usersProfileIndex'])->name('comments.users_profile.index');
+});
 
 Route::get('/test',function (){
     auth()->logout();

@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">WebProg.ir</div>
+        <div class="sidebar-brand-text mx-3">Brand Name</div>
     </a>
 
     <!-- Divider -->
@@ -48,6 +48,7 @@
                 <a class="collapse-item" href="{{ route('admin.categories.index') }}">دسته بندی ها</a>
                 <a class="collapse-item" href="{{ route('admin.attributes.index') }}">ویژگی ها</a>
                 <a class="collapse-item" href="{{ route('admin.tags.index') }}">برچسب ها</a>
+                <a class="collapse-item" href="{{ route('admin.comments.index') }}">کامنت ها</a>
             </div>
         </div>
     </li>

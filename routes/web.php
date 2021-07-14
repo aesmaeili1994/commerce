@@ -53,6 +53,10 @@ Route::get('/categories/{category:slug}',[\App\Http\Controllers\Home\CategoryCon
 Route::get('/products/{product:slug}',[\App\Http\Controllers\Home\ProductController::class,'show'])->name('home.products.show');
 Route::post('/comments/{product}',[\App\Http\Controllers\Home\CommentController::class,'store'])->name('home.comments.store');
 
+//route for Wishlist
+Route::get('/add-to-wishlist/{product}',[\App\Http\Controllers\Home\WishlistController::class,'add'])->name('home.wishlist.add');
+Route::get('/remove-from-wishlist/{product}',[\App\Http\Controllers\Home\WishlistController::class,'remove'])->name('home.wishlist.remove');
+
 //Oauth
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
 Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthController::class,'handleProviderCallback']);
@@ -60,6 +64,7 @@ Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthControll
 Route::prefix('profile')->name('home.')->group(function () {
     Route::get('/',[\App\Http\Controllers\Home\UserProfileController::class,'index'])->name('users_profile.index');
     Route::get('/comments',[\App\Http\Controllers\Home\CommentController::class,'usersProfileIndex'])->name('comments.users_profile.index');
+    Route::get('/wishlist',[\App\Http\Controllers\Home\WishlistController::class,'usersProfileIndex'])->name('wishlist.users_profile.index');
 });
 
 Route::get('/test',function (){

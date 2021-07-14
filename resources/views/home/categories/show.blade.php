@@ -281,10 +281,24 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
-                                                                        <i class="sli sli-heart"></i>
-                                                                        <span class="ht-product-action-tooltip"> افزودن به علاقه مندی ها </span>
-                                                                    </a>
+                                                                    @auth
+                                                                        @if ($product->checkUserWishlist(auth()->id()))
+                                                                            <a href="{{ route('home.wishlist.remove',['product'=>$product->id]) }}">
+                                                                                <i class="fas fa-heart" style="color: red"></i>
+                                                                                <span class="ht-product-action-tooltip"> به لیست علاقه مندی ها اضافه شده است </span>
+                                                                            </a>
+                                                                        @else
+                                                                            <a href="{{ route('home.wishlist.add',['product'=>$product->id]) }}">
+                                                                                <i class="sli sli-heart"></i>
+                                                                                <span class="ht-product-action-tooltip"> افزودن به علاقه مندی ها </span>
+                                                                            </a>
+                                                                        @endif
+                                                                    @else
+                                                                        <a href="{{ route('home.wishlist.add',['product'=>$product->id]) }}">
+                                                                            <i class="sli sli-heart"></i>
+                                                                            <span class="ht-product-action-tooltip"> افزودن به علاقه مندی ها </span>
+                                                                        </a>
+                                                                    @endauth
                                                                 </li>
                                                                 <li>
                                                                     <a href="#">
@@ -474,7 +488,21 @@
                                                 <a href="#">افزودن به سبد خرید</a>
                                             </div>
                                             <div class="pro-details-wishlist">
-                                                <a title="Add To Wishlist" href="#"><i class="sli sli-heart"></i></a>
+                                                @auth
+                                                    @if ($product->checkUserWishlist(auth()->id()))
+                                                        <a href="{{ route('home.wishlist.remove',['product'=>$product->id]) }}">
+                                                            <i class="fas fa-heart" style="color: red"></i>
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('home.wishlist.add',['product'=>$product->id]) }}">
+                                                            <i class="sli sli-heart"></i>
+                                                        </a>
+                                                    @endif
+                                                @else
+                                                    <a href="{{ route('home.wishlist.add',['product'=>$product->id]) }}">
+                                                        <i class="sli sli-heart"></i>
+                                                    </a>
+                                                @endauth
                                             </div>
                                             <div class="pro-details-compare">
                                                 <a title="Add To Compare" href="#"><i class="sli sli-refresh"></i></a>

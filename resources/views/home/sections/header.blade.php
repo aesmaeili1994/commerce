@@ -20,6 +20,8 @@
 
                                 <li><a href="contact-us.html"> تماس با ما </a></li>
 
+                                <li><a href="{{ route('home.compare.index') }}">مقایسه</a></li>
+
                                 <li class="angle-shape">
                                     <a href="#"> فروشگاه </a>
 

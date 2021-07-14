@@ -48,6 +48,9 @@
                             </ul>
                         </li>
 
+                        <li><a href="{{ route('home.compare.index') }}">مقایسه</a></li>
+
+
                         <li><a href="contact-us.html">تماس با ما</a></li>
 
                         <li><a href="about_us.html"> در باره ما</a></li>

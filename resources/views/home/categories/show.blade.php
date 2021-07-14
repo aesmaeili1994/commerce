@@ -301,7 +301,7 @@
                                                                     @endauth
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="{{ route('home.compare.add',['product'=>$product->id]) }}">
                                                                         <i class="sli sli-refresh"></i>
                                                                         <span class="ht-product-action-tooltip"> مقایسه</span>
                                                                     </a>
@@ -312,7 +312,7 @@
                                                     <div class="ht-product-content">
                                                         <div class="ht-product-content-inner">
                                                             <div class="ht-product-categories">
-                                                                <a href="#">{{ $product->category->name }}</a>
+                                                                <a href="{{ route('home.categories.show',['category'=>$product->category->slug]) }}">{{ $product->category->name }}</a>
                                                             </div>
                                                             <h4 class="ht-product-title text-right">
                                                                 <a href="{{ route('home.products.show',['product'=>$product->slug]) }}">{{ $product->name }}</a>
@@ -505,7 +505,9 @@
                                                 @endauth
                                             </div>
                                             <div class="pro-details-compare">
-                                                <a title="Add To Compare" href="#"><i class="sli sli-refresh"></i></a>
+                                                <a title="Add To Compare" href="{{ route('home.compare.add',['product'=>$product->id]) }}">
+                                                    <i class="sli sli-refresh"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     @else
@@ -518,7 +520,7 @@
                                     <div class="pro-details-meta">
                                         <span>دسته بندی :</span>
                                         <ul>
-                                            <li><a href="#">{{ $product->category->name }}
+                                            <li><a href="{{ route('home.categories.show',['category'=>$product->category->slug]) }}">{{ $product->category->name }}
                                                     - {{ $product->category()->with('parent')->first()->parent->name }}</a>
                                             </li>
                                         </ul>

@@ -57,6 +57,11 @@ Route::post('/comments/{product}',[\App\Http\Controllers\Home\CommentController:
 Route::get('/add-to-wishlist/{product}',[\App\Http\Controllers\Home\WishlistController::class,'add'])->name('home.wishlist.add');
 Route::get('/remove-from-wishlist/{product}',[\App\Http\Controllers\Home\WishlistController::class,'remove'])->name('home.wishlist.remove');
 
+//route for compare
+Route::get('/compare',[\App\Http\Controllers\Home\CompareController::class,'index'])->name('home.compare.index');
+Route::get('/add-to-compare/{product}',[\App\Http\Controllers\Home\CompareController::class,'add'])->name('home.compare.add');
+Route::get('/remove-from-compare/{product}',[\App\Http\Controllers\Home\CompareController::class,'remove'])->name('home.compare.remove');
+
 //Oauth
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
 Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthController::class,'handleProviderCallback']);
@@ -68,5 +73,6 @@ Route::prefix('profile')->name('home.')->group(function () {
 });
 
 Route::get('/test',function (){
-    auth()->logout();
+//    auth()->logout();
+    dd(session()->get('compareProducts'));
 });

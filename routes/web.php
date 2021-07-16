@@ -62,6 +62,13 @@ Route::get('/compare',[\App\Http\Controllers\Home\CompareController::class,'inde
 Route::get('/add-to-compare/{product}',[\App\Http\Controllers\Home\CompareController::class,'add'])->name('home.compare.add');
 Route::get('/remove-from-compare/{product}',[\App\Http\Controllers\Home\CompareController::class,'remove'])->name('home.compare.remove');
 
+//route for cart
+Route::get('/cart',[\App\Http\Controllers\Home\CartController::class,'index'])->name('home.cart.index');
+Route::post('/add-to-cart',[\App\Http\Controllers\Home\CartController::class,'add'])->name('home.cart.add');
+Route::get('/remove-from-cart/{rowId}',[\App\Http\Controllers\Home\CartController::class,'remove'])->name('home.cart.remove');
+Route::put('/cart',[\App\Http\Controllers\Home\CartController::class,'update'])->name('home.cart.update');
+Route::get('/clear-cart',[\App\Http\Controllers\Home\CartController::class,'clear'])->name('home.cart.clear');
+
 //Oauth
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
 Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthController::class,'handleProviderCallback']);
@@ -73,6 +80,8 @@ Route::prefix('profile')->name('home.')->group(function () {
 });
 
 Route::get('/test',function (){
-//    auth()->logout();
-    dd(session()->get('compareProducts'));
+    auth()->logout();
+//    dd(session()->get('compareProducts'));
+//    \Cart::clear();
+//    dd(\Cart::getContent());
 });

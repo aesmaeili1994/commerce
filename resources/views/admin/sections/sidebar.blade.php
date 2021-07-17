@@ -58,6 +58,30 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
+        سفارشات
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders" aria-expanded="true"
+           aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span> سفارشات </span>
+        </a>
+        <div id="collapseOrders" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">سفارشات</a>
+                <a class="collapse-item" href="#">تراکنش ها</a>
+                <a class="collapse-item" href="{{ route('admin.coupons.index') }}">کوپن ها</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
         تنظیملت
     </div>
 

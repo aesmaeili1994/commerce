@@ -25,6 +25,7 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
     Route::resource('products',\App\Http\Controllers\Admin\ProductController::class);
     Route::resource('banners',\App\Http\Controllers\Admin\BannerController::class);
     Route::resource('comments',\App\Http\Controllers\Admin\CommentController::class);
+    Route::resource('coupons',\App\Http\Controllers\Admin\CouponController::class);
 
     //route for change approve comment
     Route::get('/comments/{comment}/change-approve',[\App\Http\Controllers\Admin\CommentController::class,'changeApprove'])->name('comments.change-approve');
@@ -68,6 +69,7 @@ Route::post('/add-to-cart',[\App\Http\Controllers\Home\CartController::class,'ad
 Route::get('/remove-from-cart/{rowId}',[\App\Http\Controllers\Home\CartController::class,'remove'])->name('home.cart.remove');
 Route::put('/cart',[\App\Http\Controllers\Home\CartController::class,'update'])->name('home.cart.update');
 Route::get('/clear-cart',[\App\Http\Controllers\Home\CartController::class,'clear'])->name('home.cart.clear');
+Route::post('/check-coupon',[\App\Http\Controllers\Home\CartController::class,'checkCoupon'])->name('home.coupons.check');
 
 //Oauth
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');

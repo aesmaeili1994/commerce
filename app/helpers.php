@@ -76,5 +76,13 @@ function checkCoupon($code){
     return ['success'=>'کد تخفیف برای شما ثبت شد'];
 }
 
+function province_name($provinceId){
+    return \App\Models\Province::findOrFail($provinceId)->name;
+}
+
+function city_name($cityId){
+    return \App\Models\City::findOrFail($cityId)->name;
+}
+
 
 

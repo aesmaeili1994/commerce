@@ -70,6 +70,7 @@ Route::get('/remove-from-cart/{rowId}',[\App\Http\Controllers\Home\CartControlle
 Route::put('/cart',[\App\Http\Controllers\Home\CartController::class,'update'])->name('home.cart.update');
 Route::get('/clear-cart',[\App\Http\Controllers\Home\CartController::class,'clear'])->name('home.cart.clear');
 Route::post('/check-coupon',[\App\Http\Controllers\Home\CartController::class,'checkCoupon'])->name('home.coupons.check');
+Route::get('/checkout',[\App\Http\Controllers\Home\CartController::class,'checkout'])->name('home.orders.checkout');
 
 //Oauth
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
@@ -77,9 +78,17 @@ Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthControll
 
 Route::prefix('profile')->name('home.')->group(function () {
     Route::get('/',[\App\Http\Controllers\Home\UserProfileController::class,'index'])->name('users_profile.index');
+
     Route::get('/comments',[\App\Http\Controllers\Home\CommentController::class,'usersProfileIndex'])->name('comments.users_profile.index');
+
     Route::get('/wishlist',[\App\Http\Controllers\Home\WishlistController::class,'usersProfileIndex'])->name('wishlist.users_profile.index');
+
+    Route::get('/addresses',[\App\Http\Controllers\Home\AddressController::class,'index'])->name('addresses.index');
+    Route::post('/addresses',[\App\Http\Controllers\Home\AddressController::class,'store'])->name('addresses.store');
+    Route::put('/addresses/{address}',[\App\Http\Controllers\Home\AddressController::class,'update'])->name('addresses.update');
 });
+
+Route::get('/get-province-cities-list',[\App\Http\Controllers\Home\AddressController::class,'getProvinceCitiesList']);
 
 Route::get('/test',function (){
     auth()->logout();

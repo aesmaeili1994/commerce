@@ -59,19 +59,21 @@ function cartTotalAmount(){
 function checkCoupon($code){
     $coupon = \App\Models\Coupon::where('code',$code)->where('expired_at','>',Carbon::now())->first();
     if ($coupon == null) {
+        session()->forget('coupon');
         return ['error'=>'کد تخفیف وارد شده وجود ندارد'];
     }
 
     if ( \App\Models\Order::where('user_id',auth()->id())->where('coupon_id',$coupon->id)->where('payment_status',1)->exists()  ) {
+        session()->forget('coupon');
         return ['error'=>'این کد تخفیف قبلا استفاده شده است'];
     }
 
     if ($coupon->getRawOriginal('type')=='amount' ) {
-        session()->put('coupon',['code' => $coupon->code , 'amount' => $coupon->amount]);
+        session()->put('coupon',['id' => $coupon->id ,'code' => $coupon->code , 'amount' => $coupon->amount]);
     }else{
         $total=\Cart::getTotal();
         $amount=(($total*$coupon->percentage)/100) > $coupon->max_percentage_amount ? $coupon->max_percentage_amount : (($total*$coupon->percentage)/100);
-        session()->put('coupon',['code' => $coupon->code , 'amount' => $amount]);
+        session()->put('coupon',['id' => $coupon->id ,'code' => $coupon->code , 'amount' => $amount]);
     }
     return ['success'=>'کد تخفیف برای شما ثبت شد'];
 }

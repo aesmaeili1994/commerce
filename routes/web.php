@@ -72,6 +72,10 @@ Route::get('/clear-cart',[\App\Http\Controllers\Home\CartController::class,'clea
 Route::post('/check-coupon',[\App\Http\Controllers\Home\CartController::class,'checkCoupon'])->name('home.coupons.check');
 Route::get('/checkout',[\App\Http\Controllers\Home\CartController::class,'checkout'])->name('home.orders.checkout');
 
+//route for payment
+Route::post('/payment',[\App\Http\Controllers\Home\PaymentController::class,'payment'])->name('home.payment');
+Route::get('/payment-verify/{gatewayName}',[\App\Http\Controllers\Home\PaymentController::class,'paymentVerify'])->name('home.payment_verify');
+
 //Oauth
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
 Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthController::class,'handleProviderCallback']);
@@ -91,8 +95,9 @@ Route::prefix('profile')->name('home.')->group(function () {
 Route::get('/get-province-cities-list',[\App\Http\Controllers\Home\AddressController::class,'getProvinceCitiesList']);
 
 Route::get('/test',function (){
-    auth()->logout();
+//    auth()->logout();
 //    dd(session()->get('compareProducts'));
 //    \Cart::clear();
 //    dd(\Cart::getContent());
+    dd(session()->get('coupon'));
 });

@@ -101,68 +101,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Single Tab Content Start -->
-                                    <div class="tab-pane fade" id="orders" role="tabpanel">
-                                        <div class="myaccount-content">
-                                            <h3>سفارشات</h3>
-                                            <div class="myaccount-table table-responsive text-center">
-                                                <table class="table table-bordered">
-                                                    <thead class="thead-light">
-                                                    <tr>
-                                                        <th> سفارش </th>
-                                                        <th> تاریخ </th>
-                                                        <th> وضعیت </th>
-                                                        <th> جمع کل </th>
-                                                        <th> عملیات </th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td> 22 تیر 1399 </td>
-                                                        <td>Pending</td>
-                                                        <td>
-                                                            30000
-                                                            تومان
-                                                        </td>
-                                                        <td><a href="#" data-toggle="modal"
-                                                               data-target="#ordersDetiles"
-                                                               class="check-btn sqr-btn "> نمایش جزئیات </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td> 22 تیر 1399 </td>
-                                                        <td>Approved</td>
-                                                        <td>
-                                                            50000
-                                                            تومان
-                                                        </td>
-                                                        <td><a href="#" data-toggle="modal"
-                                                               data-target="#ordersDetiles"
-                                                               class="check-btn sqr-btn "> نمایش جزئیات </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td> 22 تیر 1399 </td>
-                                                        <td>On Hold</td>
-                                                        <td>
-                                                            20000
-                                                            تومان
-                                                        </td>
-                                                        <td><a href="#" data-toggle="modal"
-                                                               data-target="#ordersDetiles"
-                                                               class="check-btn sqr-btn "> نمایش جزئیات </a>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single Tab Content End -->
-
                                 </div>
                             </div> <!-- My Account Tab Content End -->
                         </div>

@@ -10,4 +10,23 @@ class Transaction extends Model
     use HasFactory;
     protected $table="transactions";
     protected $guarded=[];
+
+    public function getStatusAttribute($status)
+    {
+        switch ($status) {
+            case '0':
+                $status='ناموفق';
+                break;
+
+            case '1':
+                $status='موفق';
+                break;
+        }
+        return $status;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -26,6 +26,8 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
     Route::resource('banners',\App\Http\Controllers\Admin\BannerController::class);
     Route::resource('comments',\App\Http\Controllers\Admin\CommentController::class);
     Route::resource('coupons',\App\Http\Controllers\Admin\CouponController::class);
+    Route::resource('orders',\App\Http\Controllers\Admin\OrderController::class);
+    Route::resource('transactions',\App\Http\Controllers\Admin\TransactionController::class);
 
     //route for change approve comment
     Route::get('/comments/{comment}/change-approve',[\App\Http\Controllers\Admin\CommentController::class,'changeApprove'])->name('comments.change-approve');
@@ -90,6 +92,8 @@ Route::prefix('profile')->name('home.')->group(function () {
     Route::get('/addresses',[\App\Http\Controllers\Home\AddressController::class,'index'])->name('addresses.index');
     Route::post('/addresses',[\App\Http\Controllers\Home\AddressController::class,'store'])->name('addresses.store');
     Route::put('/addresses/{address}',[\App\Http\Controllers\Home\AddressController::class,'update'])->name('addresses.update');
+
+    Route::get('/orders',[\App\Http\Controllers\Home\OrderController::class,'index'])->name('orders.index');
 });
 
 Route::get('/get-province-cities-list',[\App\Http\Controllers\Home\AddressController::class,'getProvinceCitiesList']);

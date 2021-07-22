@@ -98,6 +98,12 @@ Route::prefix('profile')->name('home.')->group(function () {
 
 Route::get('/get-province-cities-list',[\App\Http\Controllers\Home\AddressController::class,'getProvinceCitiesList']);
 
+//route for about-us page & contact-us page
+Route::get('/about-us',[\App\Http\Controllers\Home\HomeController::class,'aboutUs'])->name('home.about-us');
+Route::get('/contact-us',[\App\Http\Controllers\Home\HomeController::class,'contactUs'])->name('home.contact-us');
+Route::post('/contact-us-form',[\App\Http\Controllers\Home\HomeController::class,'contactUsForm'])->name('home.contact-us.form');
+
+
 Route::get('/test',function (){
 //    auth()->logout();
 //    dd(session()->get('compareProducts'));

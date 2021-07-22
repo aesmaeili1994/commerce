@@ -15,7 +15,6 @@
     <link href="{{asset('/css/home.css')}}" rel="stylesheet">
     @yield('style')
 </head>
-
 <body>
 
 
@@ -41,6 +40,7 @@
 
 @yield('script')
 
+{!!  GoogleReCaptchaV3::init() !!}
 </body>
 
 </html>

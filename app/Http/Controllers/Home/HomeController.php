@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Product;
 use App\Models\Setting;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
@@ -19,6 +20,14 @@ class HomeController extends Controller
 //        $product=Product::find(8);
 //        dd($product->attributes()->with('attribute')->first()->attribute->name);
     //end test-----------------------------------
+
+        SEOTools::setTitle('Home');
+        SEOTools::setDescription('This is my page description');
+        SEOTools::opengraph()->setUrl('http://current.url.com');
+        SEOTools::setCanonical('https://codecasts.com.br/lesson');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
 
         //image slider
         $banners=Banner::where('type','slider')->where('is_active',1)->orderBy('priority')->get();

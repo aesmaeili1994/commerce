@@ -103,6 +103,10 @@ Route::get('/about-us',[\App\Http\Controllers\Home\HomeController::class,'aboutU
 Route::get('/contact-us',[\App\Http\Controllers\Home\HomeController::class,'contactUs'])->name('home.contact-us');
 Route::post('/contact-us-form',[\App\Http\Controllers\Home\HomeController::class,'contactUsForm'])->name('home.contact-us.form');
 
+//route for sitemap
+Route::get('/sitemap',[\App\Http\Controllers\Home\SitemapController::class,'index'])->name('home.sitemap.index');
+Route::get('/sitemap-products',[\App\Http\Controllers\Home\SitemapController::class,'sitemapProducts'])->name('home.sitemap.products');
+Route::get('/sitemap-tags',[\App\Http\Controllers\Home\SitemapController::class,'sitemapTags'])->name('home.sitemap.tags');
 
 Route::get('/test',function (){
 //    auth()->logout();

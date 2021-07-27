@@ -18,7 +18,37 @@
             <span> داشبورد </span></a>
     </li>
 
-    <!-- Divider -->
+
+    @role('admin')
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            کاربران
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+               aria-expanded="true"
+               aria-controls="collapsePages">
+                <i class="fas fa-fw fa-users"></i>
+                <span> کاربران </span>
+            </a>
+            <div id="collapseUsers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('admin.users.index') }}">لیست کاربران</a>
+                    <a class="collapse-item" href="{{ route('admin.roles.index') }}">نقش کاربران</a>
+                    <a class="collapse-item" href="{{ route('admin.permissions.index') }}">پرمیژن ها</a>
+                </div>
+            </div>
+        </li>
+    @endrole
+
+
+
+<!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
@@ -37,7 +67,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="true"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
+           aria-expanded="true"
            aria-controls="collapsePages">
             <i class="fas fa-fw fa-cart-plus"></i>
             <span> محصولات </span>

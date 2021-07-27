@@ -110,5 +110,4 @@
         </div>
     </div>
     <!-- my account wrapper end -->
-
 @endsection

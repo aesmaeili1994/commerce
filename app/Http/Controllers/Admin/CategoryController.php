@@ -38,7 +38,6 @@ class CategoryController extends Controller
         ]);
 
         try {
-
             DB::beginTransaction();
 
             $category=Category::create([

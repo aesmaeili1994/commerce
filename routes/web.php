@@ -17,7 +17,9 @@ Route::get('/admin-panel/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
-Route::prefix('admin-panel/management')->name('admin.')->group(function () {
+
+
+Route::prefix('admin-panel/management')->name('admin.')->middleware(['role:admin|product-admin'])->group(function () {
     Route::resource('brands',\App\Http\Controllers\Admin\BrandController::class);
     Route::resource('attributes',\App\Http\Controllers\Admin\AttributeController::class);
     Route::resource('categories',\App\Http\Controllers\Admin\CategoryController::class);
@@ -28,6 +30,9 @@ Route::prefix('admin-panel/management')->name('admin.')->group(function () {
     Route::resource('coupons',\App\Http\Controllers\Admin\CouponController::class);
     Route::resource('orders',\App\Http\Controllers\Admin\OrderController::class);
     Route::resource('transactions',\App\Http\Controllers\Admin\TransactionController::class);
+    Route::resource('users',\App\Http\Controllers\Admin\UserController::class)->middleware(['role:admin']);
+    Route::resource('permissions',\App\Http\Controllers\Admin\PermissionController::class)->middleware(['role:admin']);
+    Route::resource('roles',\App\Http\Controllers\Admin\RoleController::class)->middleware(['role:admin']);
 
     //route for change approve comment
     Route::get('/comments/{comment}/change-approve',[\App\Http\Controllers\Admin\CommentController::class,'changeApprove'])->name('comments.change-approve');
@@ -82,7 +87,7 @@ Route::get('/payment-verify/{gatewayName}',[\App\Http\Controllers\Home\PaymentCo
 Route::get('/login/{provider}',[\App\Http\Controllers\Auth\AuthController::class,'redirectToProvider'])->name('provider.login');
 Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthController::class,'handleProviderCallback']);
 
-Route::prefix('profile')->name('home.')->group(function () {
+Route::prefix('profile')->name('home.')->middleware(['auth'])->group(function () {
     Route::get('/',[\App\Http\Controllers\Home\UserProfileController::class,'index'])->name('users_profile.index');
 
     Route::get('/comments',[\App\Http\Controllers\Home\CommentController::class,'usersProfileIndex'])->name('comments.users_profile.index');
@@ -109,9 +114,9 @@ Route::get('/sitemap-products',[\App\Http\Controllers\Home\SitemapController::cl
 Route::get('/sitemap-tags',[\App\Http\Controllers\Home\SitemapController::class,'sitemapTags'])->name('home.sitemap.tags');
 
 Route::get('/test',function (){
-//    auth()->logout();
+    auth()->logout();
 //    dd(session()->get('compareProducts'));
 //    \Cart::clear();
 //    dd(\Cart::getContent());
-    dd(session()->get('coupon'));
+//    dd(session()->get('coupon'));
 });

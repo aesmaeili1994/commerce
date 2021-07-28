@@ -40,22 +40,40 @@
         var myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Earnings",
+                labels: @json($labels),
+                datasets:
+                [
+                    {
+                        label: "تراکنش های موفق",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(78, 115, 223, 0.05)",
+                        borderColor: "rgba(78, 115, 223, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        data: @json($successTransactions),
+                    },
+                    {
+                    label: "تراکنش های ناموفق",
                     lineTension: 0.3,
-                    backgroundColor: "rgba(78, 115, 223, 0.05)",
-                    borderColor: "rgba(78, 115, 223, 1)",
+                    backgroundColor: "rgba(255, 99, 132, 0.05)",
+                    borderColor: "rgba(255, 99, 132, 1)",
                     pointRadius: 3,
-                    pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                    pointBorderColor: "rgba(78, 115, 223, 1)",
+                    pointBackgroundColor: "rgba(255, 99, 132, 1)",
+                    pointBorderColor: "rgba(255, 99, 132, 1)",
                     pointHoverRadius: 3,
-                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHoverBackgroundColor: "rgba(255, 99, 132, 1)",
+                    pointHoverBorderColor: "rgba(255, 99, 132, 1)",
                     pointHitRadius: 10,
                     pointBorderWidth: 2,
-                    data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
-                }],
+                    data: @json($unsuccessTransactions),
+                }
+                ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -77,7 +95,7 @@
                             drawBorder: false
                         },
                         ticks: {
-                            maxTicksLimit: 7
+                            // maxTicksLimit: 7
                         }
                     }],
                     yAxes: [{
@@ -86,7 +104,7 @@
                             padding: 10,
                             // Include a dollar sign in the ticks
                             callback: function(value, index, values) {
-                                return '$' + number_format(value);
+                                return number_format(value) + ' تومان ';
                             }
                         },
                         gridLines: {
@@ -118,7 +136,7 @@
                     callbacks: {
                         label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' تومان ';
                         }
                     }
                 }
@@ -137,11 +155,11 @@
         var myPieChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ["Direct", "Referral", "Social"],
+                labels: ["تراکنش های موفق", "تراکنش های ناموفق"],
                 datasets: [{
-                    data: [55, 30, 15],
-                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-                    hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                    data: @json($transactionsCount),
+                    backgroundColor: ['#4e73df', '#1cc88a'],
+                    hoverBackgroundColor: ['#2e59d9', '#17a673'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
                 }],
             },
@@ -274,7 +292,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary"> لورم ایپسوم </h6>
+                    <h6 class="m-0 font-weight-bold text-primary"> تراکنش های یکسال اخیر </h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -304,7 +322,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary"> لورم ایپسوم </h6>
+                    <h6 class="m-0 font-weight-bold text-primary"> تعداد تراکنش های یکسال اخیر </h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -327,13 +345,10 @@
                     </div>
                     <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+                      <i class="fas fa-circle text-primary"></i> تراکنش های موفق
                     </span>
-                        <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                        <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> تراکنش های ناموفق
                     </span>
                     </div>
                 </div>

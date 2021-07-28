@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin-panel/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
-
-
-
 Route::prefix('admin-panel/management')->name('admin.')->middleware(['role:admin|product-admin'])->group(function () {
+    //route for chart in dashboard
+    Route::get('/dashboard',[\App\Http\Controllers\Admin\AdminController::class,'index'])->name('dashboard');
+
     Route::resource('brands',\App\Http\Controllers\Admin\BrandController::class);
     Route::resource('attributes',\App\Http\Controllers\Admin\AttributeController::class);
     Route::resource('categories',\App\Http\Controllers\Admin\CategoryController::class);

@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+        <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span> داشبورد </span></a>
     </li>
@@ -36,11 +36,18 @@
                 <i class="fas fa-fw fa-users"></i>
                 <span> کاربران </span>
             </a>
-            <div id="collapseUsers" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapseUsers" class="collapse
+            {{ request()->is('admin-panel/management/users*') ? 'show' : '' }}
+            {{ request()->is('admin-panel/management/roles*') ? 'show' : '' }}
+            {{ request()->is('admin-panel/management/permissions*') ? 'show' : '' }} "
+            aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('admin.users.index') }}">لیست کاربران</a>
-                    <a class="collapse-item" href="{{ route('admin.roles.index') }}">نقش کاربران</a>
-                    <a class="collapse-item" href="{{ route('admin.permissions.index') }}">پرمیژن ها</a>
+                    <a class="collapse-item {{ request()->is('admin-panel/management/users*') ? 'active' : '' }}"
+                       href="{{ route('admin.users.index') }}">لیست کاربران</a>
+                    <a class="collapse-item {{ request()->is('admin-panel/management/roles*') ? 'active' : '' }}"
+                       href="{{ route('admin.roles.index') }}">نقش کاربران</a>
+                    <a class="collapse-item {{ request()->is('admin-panel/management/permissions*') ? 'active' : '' }}"
+                       href="{{ route('admin.permissions.index') }}">پرمیژن ها</a>
                 </div>
             </div>
         </li>
@@ -73,13 +80,28 @@
             <i class="fas fa-fw fa-cart-plus"></i>
             <span> محصولات </span>
         </a>
-        <div id="collapseProducts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseProducts" class="collapse
+        {{ request()->is('admin-panel/management/products*') ? 'show' : '' }}
+        {{ request()->is('admin-panel/management/categories*') ? 'show' : '' }}
+        {{ request()->is('admin-panel/management/attributes*') ? 'show' : '' }}
+        {{ request()->is('admin-panel/management/tags*') ? 'show' : '' }}
+        {{ request()->is('admin-panel/management/comments*') ? 'show' : '' }} "
+        aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.products.index') }}">محصولات</a>
-                <a class="collapse-item" href="{{ route('admin.categories.index') }}">دسته بندی ها</a>
-                <a class="collapse-item" href="{{ route('admin.attributes.index') }}">ویژگی ها</a>
-                <a class="collapse-item" href="{{ route('admin.tags.index') }}">برچسب ها</a>
-                <a class="collapse-item" href="{{ route('admin.comments.index') }}">کامنت ها</a>
+                <a class="collapse-item {{ request()->is('admin-panel/management/products*') ? 'active' : '' }}"
+                    href="{{ route('admin.products.index') }}">محصولات</a>
+
+                <a class="collapse-item {{ request()->is('admin-panel/management/categories*') ? 'active' : '' }}"
+                    href="{{ route('admin.categories.index') }}">دسته بندی ها</a>
+
+                <a class="collapse-item {{ request()->is('admin-panel/management/attributes*') ? 'active' : '' }}"
+                    href="{{ route('admin.attributes.index') }}">ویژگی ها</a>
+
+                <a class="collapse-item {{ request()->is('admin-panel/management/tags*') ? 'active' : '' }}"
+                    href="{{ route('admin.tags.index') }}">برچسب ها</a>
+
+                <a class="collapse-item {{ request()->is('admin-panel/management/comments*') ? 'active' : '' }}"
+                    href="{{ route('admin.comments.index') }}">کامنت ها</a>
             </div>
         </div>
     </li>
@@ -99,11 +121,20 @@
             <i class="fas fa-fw fa-folder"></i>
             <span> سفارشات </span>
         </a>
-        <div id="collapseOrders" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseOrders" class="collapse
+        {{ request()->is('admin-panel/management/orders*') ? 'show' : '' }}
+        {{ request()->is('admin-panel/management/transactions*') ? 'show' : '' }}
+        {{ request()->is('admin-panel/management/coupons*') ? 'show' : '' }} "
+        aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.orders.index') }}">سفارشات</a>
-                <a class="collapse-item" href="{{ route('admin.transactions.index') }}">تراکنش ها</a>
-                <a class="collapse-item" href="{{ route('admin.coupons.index') }}">کوپن ها</a>
+                <a class="collapse-item {{ request()->is('admin-panel/management/orders*') ? 'active' : '' }}"
+                   href="{{ route('admin.orders.index') }}">سفارشات</a>
+
+                <a class="collapse-item {{ request()->is('admin-panel/management/transactions*') ? 'active' : '' }}"
+                   href="{{ route('admin.transactions.index') }}">تراکنش ها</a>
+
+                <a class="collapse-item {{ request()->is('admin-panel/management/coupons*') ? 'active' : '' }}"
+                   href="{{ route('admin.coupons.index') }}">کوپن ها</a>
             </div>
         </div>
     </li>

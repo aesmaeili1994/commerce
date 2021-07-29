@@ -22,6 +22,11 @@
 
 <div class="wrapper">
 
+    <div id="overlayer"></div>
+    <span class="loader">
+        <span class="loader-inner"></span>
+    </span>
+
     @include('home.sections.header')
 
     @include('home.sections.mobile_off_canvas')
@@ -41,6 +46,13 @@
 @include('sweet::alert')
 
 @yield('script')
+
+<script>
+    $(window).load(function(){
+        $(".loader").delay(2000).fadeOut("slow");
+        $("#overlayer").delay(2000).fadeOut("slow");
+    })
+</script>
 
 {!!  GoogleReCaptchaV3::init() !!}
 </body>

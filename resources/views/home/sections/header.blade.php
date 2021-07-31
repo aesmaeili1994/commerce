@@ -204,7 +204,7 @@
                 <div class="col-6">
                     <div class="mobile-logo">
                         <a href="index.html">
-                            <h4 class="font-weight-bold">WebProg.ir</h4>
+                            <h4 class="font-weight-bold">Alireza Esmaeili</h4>
                         </a>
                     </div>
                 </div>

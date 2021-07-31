@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="copyright text-center pb-20">
-                        <p>Copyright © WebProg.ir</p>
+                        <p>Copyright © Alireza Esmaeili</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-3 col-12">

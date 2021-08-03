@@ -11,4 +11,11 @@ class UserProfileController extends Controller
     {
         return view('home.users_profile.index');
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        alert()->success('خروج شما موفقیت آمیز بود','باتشکر');
+        return redirect()->route('home.index');
+    }
 }

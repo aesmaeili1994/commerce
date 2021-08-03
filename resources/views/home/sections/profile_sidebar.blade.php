@@ -25,7 +25,7 @@
         نظرات
     </a>
 
-    <a href="login.html">
+    <a href="{{ route('home.users_profile.logout') }}">
         <i class="sli sli-logout ml-1"></i>
         خروج
     </a>

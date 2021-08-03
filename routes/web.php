@@ -51,6 +51,7 @@ Route::prefix('admin-panel/management')->name('admin.')->middleware(['role:admin
     Route::get('/products/{product}/category-edit',[\App\Http\Controllers\Admin\ProductController::class,'editCategory'])->name('products.category.edit');
     Route::put('/products/{product}/category-update',[\App\Http\Controllers\Admin\ProductController::class,'updateCategory'])->name('products.category.update');
 
+
 });
 
 Route::get('/',[\App\Http\Controllers\Home\HomeController::class,'index'])->name('home.index');
@@ -87,6 +88,9 @@ Route::get('/login/{provider}/callback',[\App\Http\Controllers\Auth\AuthControll
 Route::prefix('profile')->name('home.')->middleware(['auth'])->group(function () {
     Route::get('/',[\App\Http\Controllers\Home\UserProfileController::class,'index'])->name('users_profile.index');
 
+
+    Route::get('/logout',[\App\Http\Controllers\Home\UserProfileController::class,'logout'])->name('users_profile.logout');
+
     Route::get('/comments',[\App\Http\Controllers\Home\CommentController::class,'usersProfileIndex'])->name('comments.users_profile.index');
 
     Route::get('/wishlist',[\App\Http\Controllers\Home\WishlistController::class,'usersProfileIndex'])->name('wishlist.users_profile.index');
@@ -111,7 +115,7 @@ Route::get('/sitemap-products',[\App\Http\Controllers\Home\SitemapController::cl
 Route::get('/sitemap-tags',[\App\Http\Controllers\Home\SitemapController::class,'sitemapTags'])->name('home.sitemap.tags');
 
 Route::get('/test',function (){
-    auth()->logout();
+//    auth()->logout();
 //    dd(session()->get('compareProducts'));
 //    \Cart::clear();
 //    dd(\Cart::getContent());

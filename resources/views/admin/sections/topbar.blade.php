@@ -194,7 +194,7 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in text-right"
                  aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('home.users_profile.index') }}">
                     <i class="fas fa-user fa-sm fa-fw ml-2 text-gray-400"></i>
                     پروفایل
                 </a>
@@ -220,15 +220,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> لورم ایپسوم متن ساختگی </h5>
+                <h5 class="modal-title" id="exampleModalLabel"> توجه </h5>
                 <button class="close ml-0" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body"> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                است. </div>
+            <div class="modal-body">آیا قصد خروج دارید؟</div>
             <div class="modal-footer">
-                <a class="btn btn-primary" href="login.html"> خروج </a>
+                <a class="btn btn-primary" href="{{ route('home.users_profile.logout') }}"> خروج </a>
                 <button class="btn btn-secondary" type="button" data-dismiss="modal"> لغو </button>
             </div>
         </div>

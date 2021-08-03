@@ -66,6 +66,7 @@
                 <ul class="text-right">
                     @auth
                         <li class="my-3"><a href="{{ route('home.users_profile.index') }}"> پروفایل </a></li>
+                        <li class="my-3"><a href="{{ route('home.users_profile.logout') }}"> خروج </a></li>
                     @else
                         <li class="my-3"><a href="{{ route('login') }}"> ورود </a></li>
                         <li class="my-3">
